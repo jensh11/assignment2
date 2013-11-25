@@ -9,7 +9,7 @@ from the LPTHW-book can be found in my other repository (https://github.com/jens
 
 - ex45 is my version of a game.
 
-- ex52 is a collection of the files needed to make my game from ex45 run in a browser.
+- ex52 is an edited version / collection of the files needed to make my game from ex45 run in a browser.
 
 
 *** Jens Hartmark, 2013 ***
