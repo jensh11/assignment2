@@ -10,6 +10,6 @@ from the LPTHW-book can be found in my other repository (https://github.com/jens
 - ex45 is my version of a game.
 
 - ex52 is an edited version / collection of the files needed to make my game from ex45 run in a browser.
-
+  (To run -> run the 'bin/app.py' file.
 
 *** Jens Hartmark, 2013 ***
