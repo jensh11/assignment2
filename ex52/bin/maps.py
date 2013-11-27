@@ -20,7 +20,7 @@ class Room(object):
 		self.paths.update(paths)
 	
 	def options(self):
-		if self.name == "Eranos" or self.name == "Escape Pod":
+		if self.name == "Eranos":
 			return "No help to be found... Pray.. Unless you type l33t"
 		elif self.paths == {}:
 			pass
@@ -37,7 +37,7 @@ class Room(object):
 			self.output = "No hint available."
 			
 	def _help(self):
-		self.output = """You are in %s. Your choices are listed above your input bar. For additional help, you can sometimes type 'l33t' for a hint, although it may not work for every room. Other commands are 'Restart', 'Save' and 'Quit'. There's also 'Credits'""" % (self.name)
+		self.output = """You are in %s. Your choices are listed above your input bar. For additional help, you can sometimes type 'l33t' for a hint, although it may not work for every room. Other commands are 'Restart', 'Credits' and 'Quit'. There's also 'Credits'""" % (self.name)
 
 def generate(num1, num2, num3):
 	global n1
@@ -119,21 +119,16 @@ How do you deal with Luhos? Brute force, speed or forfeit?
 
 victory = Room("Victory",
 """
-You jump into the pod and hit the eject button.
-The pod easily slides out into space heading to
-the planet below. As it flies to the planet, you look
-back to se your ship implode then explode like a 
-bright start, taking out the Gothon ship at the same time.
+You are the true Gladiator of the Coliseum!
+The crowd welcomes and cheers for you!
 \n
 You won!
 """, "victory.gif")
 
 loser = Room("The End",
 """
-You jump into the pod and hit the eject button.
-The pod escapes out into the void of space, then
-implodes as the hull ruptures, crushing your body
-into jelly jam.
+Get out of Rome!
+This is no place for you.
 """, "death.gif")
 
 
@@ -154,7 +149,7 @@ You die...
 
 eranos_death = Room("death",
 """
-Your swing with your axe is blocked by Korok's armor.
+Your swing with your axe is blocked by Eranos' armor.
 Khorok smirks as he raises his sword up high.
 He swings and off goes your legs.
 A quick blow to the chest and it is all over.
@@ -162,39 +157,24 @@ A quick blow to the chest and it is all over.
 
 khorok_death = Room("death",
 """
-In a panic you throw the bomb at the group of Gothons
-and make a leap for the door. Right as you drop it a
-Gothon shoots you right in the back killing you.
-As you die, you see another Gothon frantically try to disarm
-the bomb. You die knowing they will probably blow up when
-it goes off.""", "death.gif")
+You are no match to the migthy Khorok.
+He kills you with ease.""", "death.gif")
 
 lady_serana_death = Room("death",
 """
-In a panic you throw the bomb at the group of Gothons
-and make a leap for the door. Right as you drop it a
-Gothon shoots you right in the back killing you.
-As you die, you see another Gothon frantically try to disarm
-the bomb. You die knowing they will probably blow up when
-it goes off.""", "death.gif")
+Lady Serana is a much more skilled warrior than you
+You die...""", "death.gif")
 
 kirgor_back_breaker_death = Room("death",
 """
-In a panic you throw the bomb at the group of Gothons
-and make a leap for the door. Right as you drop it a
-Gothon shoots you right in the back killing you.
-As you die, you see another Gothon frantically try to disarm
-the bomb. You die knowing they will probably blow up when
-it goes off.""", "death.gif")
+You turn to dust at the hands of Kirgor.
+Death is inevitable...""", "death.gif")
 
 luhos_death = Room("death",
 """
-In a panic you throw the bomb at the group of Gothons
-and make a leap for the door. Right as you drop it a
-Gothon shoots you right in the back killing you.
-As you die, you see another Gothon frantically try to disarm
-the bomb. You die knowing they will probably blow up when
-it goes off.""", "death.gif")
+Luhos is knowns as the true Gladiator of Rome.
+The fact that you made it this far proves nothing.
+Luhos gets pleasure out of killing you.""", "death.gif")
 
 luhos.add_paths({
 	'forfeit': luhos_death,

@@ -13,7 +13,7 @@ app = web.application(urls, globals())
 render = web.template.render('templates/', base="layout")
 
 
-# A little hack so sessions works with debug mode on
+
 if web.config.get('_session') is None:
 	store = web.session.DiskStore('sessions')
 	session = web.session.Session(app, store, initializer={'room': None})
@@ -25,26 +25,26 @@ else:
 class Index(object):
 
 	def GET(self):
-		# setup the session with starting values then move to engine
+		# start the session with starting values then move to engine
 		session.room = maps.START
 		web.seeother("/game")
 		
-		
+# displays some info about the game/creator		
 class Credits(object):
 
 	def GET(self):
 		return render.credits()
-		
+# simply quits the game		
 class Quit(object):
 
 	def GET(self):
 		return render.quit()
 	
-		
+# the game engine, which runs the different commands for the game and starts it	
 class GameEngine(object):
 
 	def __init__(self):
-		self.commands = {'help': session.room._help, 'l33t': session.room.leet, 'restart': self.restart, 'save': self.save, 'quit': self.quit, 'credits': self.credits}
+		self.commands = {'help': session.room._help, 'l33t': session.room.leet, 'restart': self.restart, 'quit': self.quit, 'credits': self.credits}
 		
 	def credits(self):
 		session.room.output = "Main Programmer: Jens Hartmark. Go to /credits for more information."
@@ -53,9 +53,7 @@ class GameEngine(object):
 	def restart(self):
 		session.room = maps.START
 		web.seeother('/game')
-		
-	def save(self):
-		pass
+
 		
 	def quit(self):
 		session.room.output = "You quit. Go to /quit for more information."
@@ -75,7 +73,7 @@ class GameEngine(object):
 			if '*' in session.room.paths:
 				if form.action != session.room.num and form.action not in self.commands:
 					session.room.guess -= 1
-					session.room.output = "BZZZTT!! Access Denied. You have %d tries left" % session.room.guess
+					session.room.output = "..." % session.room.guess
 					if session.room.guess == 0:
 						session.room = session.room.go('*')
 				elif form.action == session.room.num:
@@ -83,7 +81,7 @@ class GameEngine(object):
 			else:
 				transition = session.room.go(form.action)
 				if transition == None:
-					session.room.output = "You can't do that."
+					session.room.output = "You cannot do that."
 				elif transition != None:
 					session.room = transition
 				else:
